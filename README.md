@@ -30,5 +30,5 @@ A Django application that generates company reports, including department distri
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/company-report-generator.git
+   git clone https://github.com/manasmani104/django-celery.git
    cd company-report-generator

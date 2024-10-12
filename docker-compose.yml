@@ -31,13 +31,12 @@ services:
     env_file:
       - .env
 
-
   flower:
     build: .
     container_name: flower
     command: celery -A django_celery flower --port=5555
     ports:
-      - "5555:5555"
+      - "5555:5555"  # Add this line to expose the port
     depends_on:
       - redis
       - celery

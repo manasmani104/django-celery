@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ company.name }} Report</title>
+</head>
+<body>
+    <h1>{{ company.name }} Report</h1>
+    <p>Location: {{ company.location }}</p>
+
+    <h2>Departments</h2>
+    <ul>
+        {% for department in departments %}
+            <li>{{ department.name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

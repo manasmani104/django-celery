@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ company.name }} Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        h2 {
+            color: #2196F3;
+            border-bottom: 2px solid #2196F3;
+            padding-bottom: 5px;
+        }
+        p {
+            font-size: 18px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #2196F3;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .chart-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ company.name }} Report</h1>
+    <p>Location: {{ company.location }}</p>
+
+    <h2>Departments and Employees</h2>
+    {% for department in departments %}
+        <h3>{{ department.name }}</h3>
+        <p>Total Employees: {{ department.employees.count }}</p>
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+            {% for employee in department.employees.all %}
+                <tr>
+                    <td>{{ employee.first_name }}</td>
+                    <td>{{ employee.last_name }}</td>
+                    <td>{{ employee.email }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+
+    <div class="chart-container">
+        <h2>Department Distribution Chart</h2>
+        <img src="cid:chart_image" alt="Department Chart" />
+    </div>
+</body>
+</html>

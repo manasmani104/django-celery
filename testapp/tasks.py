@@ -42,14 +42,17 @@ def generate_company_report(company_id, recipient_email):
     with open(pdf_file_path, 'wb') as f:
         f.write(pdf)
 
-    # Create the email message
+    # Create the email message with HTML content
     email = EmailMessage(
         subject=f"{company.name} Report",
-        body="Please find the attached report.",
+        body=html_string,  # Use the rendered HTML string as the body
         from_email=settings.DEFAULT_FROM_EMAIL,
         to=[recipient_email]
     )
     
+    # Set the content type to HTML
+    email.content_subtype = 'html'
+
     # Attach the chart as an inline image for email
     email.attach('chart.png', chart_image.getvalue(), 'image/png')
 
